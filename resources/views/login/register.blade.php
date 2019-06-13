@@ -1,6 +1,6 @@
 @extends('login.master_login')
 
-@section('title','Leave Manange - Sign_Up')
+@section('title','Leave Manange - Register')
 @section('content')
 <div class="page-wrapper">
     <div class="page-content--bge5 "
@@ -9,12 +9,12 @@
             <div class="login-wrap padding">
                 <div class="login-content">
                     <div class="login-logo">
-                        <h1>PAGE SIGN-UP</h1>
+                        <h1>PAGE REGISTER</h1>
                         {{-- <img src="{{asset('img/logo_mi.png')}}" width="200" height="100"> --}}
 
                     </div>
                     <div class="login-form">
-                        <form action="{{url('/sign-up')}}" method="post" name="register">
+                        <form action="{{url('/register')}}" method="post" name="register">
                             @csrf
                             <div class="form-group">
                                 <label>Name</label>
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 <label>Department</label>
                                 <select name="department" id="selectLg" class="form-control formSelect">
-                                    <option selected>Select Department</option>
+                                    <option value=" " selected>Select Department</option>
                                     <option value="ADC">ADC Department</option>
                                     <option value="MEL">MEL Department</option>
                                     <option value="CKM">CKM Department</option>
@@ -43,7 +43,7 @@
                                 </select>
                             </div>
 
-                            <button class="au-btn au-btn--block au-btn--blue m-b-15" type="submit">Sign-up</button>
+                            <button class="au-btn au-btn--block au-btn--blue m-b-15" type="submit">Register</button>
 
                         </form>
                         <div class="register-link">
@@ -59,4 +59,23 @@
     </div>
 
 </div>
+<script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
+@if (Session::has('flash_alert_errors'))
+<script>
+    Swal.fire({
+        type: 'error',
+        title: '{!! Session::get('flash_alert_errors') !!}',
+
+        })
+</script>
+@elseif(Session::has('flash_alert_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: '{!! Session::get('flash_alert_success') !!}',
+        text: 'Please confirm your email to activate your account!',
+
+        })
+</script>
+@endif
 @endsection

@@ -21,7 +21,7 @@
                             <div class="form-group">
                                 <label>E-mail</label>
                                 <input class="au-input au-input--full" type="email" name="email" id="email"
-                                    placeholder="E-mail" required>
+                                    placeholder="E-mail" value="{{ old('email') }}" required>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
@@ -38,7 +38,7 @@
                         <div class="register-link">
                             <p>
                                 Don't you have account?
-                                <a href="{{url('/sign-up')}}">Sign Up Here</a>
+                                <a href="{{url('/register')}}">Sign Up Here</a>
                             </p>
                         </div>
                     </div>
@@ -48,13 +48,16 @@
     </div>
     @include('sweet::alert')
 </div>
+
 <script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
+@if (Session::has('flash_alert_errors'))
 <script>
     Swal.fire({
-type: 'error',
-title: 'Oops...',
-text: 'Something went wrong!',
-footer: '<a href>Why do I have this issue?</a>'
-})
+        type: 'error',
+        title: '{!! Session::get('flash_alert_errors') !!}',
+
+        })
 </script>
+@endif
+
 @endsection
