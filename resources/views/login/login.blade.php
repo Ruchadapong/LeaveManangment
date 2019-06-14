@@ -1,6 +1,6 @@
 @extends('login.master_login')
 
-@section('title','Leave Manange - Sign_In')
+@section('title','Leave Manage - Sign_In')
 @section('content')
 
 <div class="page-wrapper">
@@ -10,7 +10,7 @@
             <div class="login-wrap">
                 <div class="login-content">
                     <div class="login-logo">
-                        <h1>PAGE SIGN-IN</h1>
+                        <h1> SIGN-IN PAGE </h1>
                         {{-- <img src="{{asset('img/logo_mi.png')}}" width="200" height="100"> --}}
 
                     </div>
@@ -30,7 +30,7 @@
                             </div>
                             <div class="login-checkbox float-right">
                                 <label>
-                                    <a href="#">Forgotten Password?</a>
+                                    <a href="{{url('forgot-password')}}">Forgotten Password?</a>
                                 </label>
                             </div>
                             <button class="au-btn au-btn--block au-btn--green m-b-15" type="submit">sign in</button>
@@ -58,6 +58,25 @@
 
         })
 </script>
+@elseif(Session::has('flash_confirm_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: 'Account activated',
+        text: '{!! Session::get('flash_confirm_success') !!}',
+
+        })
+</script>
+@elseif(Session::has('flash_forgot_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: 'Create password successfully',
+        text: '{!! Session::get('flash_forgot_success') !!}',
+
+        })
+</script>
+
 @endif
 
 @endsection

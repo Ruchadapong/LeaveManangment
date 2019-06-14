@@ -1,6 +1,6 @@
 @extends('login.master_login')
 
-@section('title','Leave Manange - Register')
+@section('title','Leave Manage - Register')
 @section('content')
 <div class="page-wrapper">
     <div class="page-content--bge5 "
@@ -9,7 +9,7 @@
             <div class="login-wrap padding">
                 <div class="login-content">
                     <div class="login-logo">
-                        <h1>PAGE REGISTER</h1>
+                        <h1> REGISTER PAGE</h1>
                         {{-- <img src="{{asset('img/logo_mi.png')}}" width="200" height="100"> --}}
 
                     </div>
@@ -74,6 +74,8 @@
         type: 'success',
         title: '{!! Session::get('flash_alert_success') !!}',
         text: 'Please confirm your email to activate your account!',
+
+
 
         })
 </script>

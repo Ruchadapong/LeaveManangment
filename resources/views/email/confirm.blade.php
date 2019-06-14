@@ -210,7 +210,7 @@
                                                         <h1
                                                           style='text-align:center;margin:0;font-family:Georgia,Time,sans-serif;'>
                                                           <span class="font">LEAVE
-                                                            MANANGMENT</span>
+                                                            MANAGEMENT</span>
                                                         </h1>
                                                       </div>
                                                     </div>

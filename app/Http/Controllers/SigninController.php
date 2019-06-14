@@ -74,6 +74,57 @@ class SigninController extends Controller
         return view('login.register');
     }
 
+    public function confirmAccount($email)
+    {
+        $email = base64_decode($email);
+        $userCount = User::where('email', $email)->count();
+        if ($userCount > 0) {
+            $userDetail = User::where('email', $email)->first();
+            if ($userDetail->status == 1) {
+                return redirect('/')->with('flash_confirm_success', 'Email account is activated. You can sign-in now');
+            } else {
+                User::where('email', $email)->update(['status' => 1]);
+                return redirect('/')->with('flash_confirm_success', 'Email account is activated. You can sign-in now');
+            }
+        } else {
+            abort(404);
+        }
+    }
+
+    public function forgotPassword(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+
+            //get user detail
+            $userDetail = User::where('email', $data['email'])->first();
+
+            //check email user
+            $userEmailCount = User::where('email', $data['email'])->count();
+            if ($userEmailCount == 0) {
+                return redirect()->back()->with('flash_alert_errors', 'Your email invalid!')->withInput();
+            }
+            // update new password
+            $new_password = bcrypt($data['password']);
+            User::where('email', $data['email'])->update(['password' => $new_password]);
+
+            //send email user
+            $name = $userDetail->name;
+            $email = $data['email'];
+            $messageData = [
+                'email' => $email,
+                'password' => $data['password'],
+                'name' => $name
+            ];
+            Mail::send('email.forgot_password', $messageData, function ($message) use ($email) {
+                $message->to($email)
+                    ->subject('New Password - Leave Manage');
+            });
+            return redirect('/')->with('flash_forgot_success', 'Please check your email for new password!');
+        }
+        return view('login.forgot-password');
+    }
+
     public function dashboard()
     {
         return view('leave.content');
