@@ -549,4 +549,16 @@
     </div>
 </div>
 <!-- END MAIN CONTENT-->
+<script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
+@if(Session::has('flash_sign-in_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: 'Sign-in successfully',
+        text: '{!! Session::get('flash_sign-in_success') !!}',
+
+        })
+</script>
+
+@endif
 @endsection

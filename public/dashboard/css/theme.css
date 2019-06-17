@@ -2336,8 +2336,10 @@ section {
     }
 }
 
-.header-button .notifi-dropdown::before {
-    left: 117px;
+@media (min-width: 992px){
+    .header-button .notifi-dropdown::before {
+        left: 117px;
+    }
 }
 
 .header-button2 {

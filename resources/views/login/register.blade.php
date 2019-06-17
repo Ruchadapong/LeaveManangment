@@ -3,7 +3,7 @@
 @section('title','Leave Manage - Register')
 @section('content')
 <div class="page-wrapper">
-    <div class="page-content--bge5 "
+    <div class="page-content--bgf7"
         style="background-image: url('img/bg.png'); background-repeat: no-repeat; background-size: cover;">
         <div class="container">
             <div class="login-wrap padding">
@@ -41,6 +41,11 @@
                                     <option value="FOD">FOD Department</option>
                                     <option value="EWEC">EWEC Department</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone <small> format : 012-345-6789</small></label>
+                                <input class="au-input au-input--full" type="tel" name="phone"
+                                    placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12">
                             </div>
 
                             <button class="au-btn au-btn--block au-btn--blue m-b-15" type="submit">Register</button>

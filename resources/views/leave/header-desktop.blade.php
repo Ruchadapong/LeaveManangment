@@ -3,7 +3,7 @@
     <div class="section__content section__content--p30">
         <div class="container-fluid">
             <div class="header-wrap">
-                <form class="form-header" action="" method="POST">
+                <form class="form-header invisible" action="" method="POST">
                     <input class="au-input au-input--xl" type="text" name="search"
                         placeholder="Search for datas &amp; reports..." />
                     <button class="au-btn--submit" type="submit">
@@ -12,7 +12,7 @@
                 </form>
                 <div class="header-button">
                     <div class="noti-wrap">
-                        <div class="noti__item js-item-menu">
+                        <div class="noti__item js-item-menu invisible">
                             <i class="zmdi zmdi-comment-more"></i>
                             <span class="quantity">1</span>
                             <div class="mess-dropdown js-dropdown">
@@ -44,7 +44,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="noti__item js-item-menu">
+                        <div class="noti__item js-item-menu invisible">
                             <i class="zmdi zmdi-email"></i>
                             <span class="quantity">1</span>
                             <div class="email-dropdown js-dropdown">
@@ -83,7 +83,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="noti__item js-item-menu">
+                        <div class="noti__item js-item-menu ">
                             <i class="zmdi zmdi-notifications"></i>
                             <span class="quantity">3</span>
                             <div class="notifi-dropdown js-dropdown">
@@ -126,7 +126,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                <img src="{{asset('dashboard/images/icon/avatar-01.jpg')}}" />
                             </div>
                             <div class="content">
                                 <a class="js-acc-btn" href="#">john doe</a>
@@ -135,7 +135,7 @@
                                 <div class="info clearfix">
                                     <div class="image">
                                         <a href="#">
-                                            <img src="images/icon/avatar-01.jpg" alt="John Doe" />
+                                            <img src="{{asset('dashboard/images/icon/avatar-01.jpg')}}" />
                                         </a>
                                     </div>
                                     <div class="content">
@@ -143,20 +143,6 @@
                                             <a href="#">john doe</a>
                                         </h5>
                                         <span class="email">johndoe@example.com</span>
-                                    </div>
-                                </div>
-                                <div class="account-dropdown__body">
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-account"></i>Account</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-settings"></i>Setting</a>
-                                    </div>
-                                    <div class="account-dropdown__item">
-                                        <a href="#">
-                                            <i class="zmdi zmdi-money-box"></i>Billing</a>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">

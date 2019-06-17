@@ -16,7 +16,7 @@ class SigninController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->all();
             if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'permission' => '0'])) {
-                return redirect('leave-management');
+                return redirect('leave-management')->with('flash_sign-in_success', 'Welcome Administrator.');
             } else if (Auth::attempt(['email' => $data['email'], 'password' => $data['password'], 'permission' => '1'])) {
                 $userstatus = User::where('email', $data['email'])->first();
                 if ($userstatus->status == 0) {
@@ -24,7 +24,7 @@ class SigninController extends Controller
                 }
                 return redirect('leave-management');
             } else {
-                return redirect('/')->with('flash_alert_errors', 'Email or Password invalid!')->withInput();
+                return redirect('/')->with('flash_alert_errors', 'Email or Password incorrect!')->withInput();
             }
         }
         return view('login.login');
@@ -49,6 +49,8 @@ class SigninController extends Controller
                 $users->email = $data['email'];
                 $users->password = bcrypt($data['password']);
                 $users->department = $data['department'];
+                $users->phone = $data['phone'];
+
                 $users->save();
 
                 /*send Confirmation Email */
@@ -102,7 +104,7 @@ class SigninController extends Controller
             //check email user
             $userEmailCount = User::where('email', $data['email'])->count();
             if ($userEmailCount == 0) {
-                return redirect()->back()->with('flash_alert_errors', 'Your email invalid!')->withInput();
+                return redirect()->back()->with('flash_alert_errors', 'Your email incorrect!')->withInput();
             }
             // update new password
             $new_password = bcrypt($data['password']);

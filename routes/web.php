@@ -20,9 +20,11 @@ Route::match(['get', 'post'], '/register', 'SigninController@register')->name('r
 Route::get('/confirm/{code}', 'SigninController@confirmAccount')->name('confirm');
 Route::match(['get', 'post'], '/forgot-password', 'SigninController@forgotPassword')->name('forgot-password');
 
-Route::get('/leave-management', 'SigninController@dashboard')->name('leave-management');
 
 
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/leave-management', 'SigninController@dashboard')->name('leave-management');
+});
 
 
 
