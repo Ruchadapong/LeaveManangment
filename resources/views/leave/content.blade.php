@@ -1,6 +1,6 @@
 @extends('leave.master_leave')
 
-
+@section('leave-list','active')
 @section('content')
 <!-- MAIN CONTENT-->
 <div class="main-content">

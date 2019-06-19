@@ -126,27 +126,33 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="{{asset('dashboard/images/icon/avatar-01.jpg')}}" />
+                                <img src="{{asset('dashboard/images/icon').'/'.Auth::user()->image}}"
+                                    style="background-color: white;" />
                             </div>
                             <div class="content">
-                                <a class="js-acc-btn" href="#">john doe</a>
+                                <a class="js-acc-btn" href="#">{{Auth::user()->name}}</a>
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
                                     <div class="image">
-                                        <a href="#">
-                                            <img src="{{asset('dashboard/images/icon/avatar-01.jpg')}}" />
-                                        </a>
+                                        <img src="{{asset('dashboard/images/icon').'/'.Auth::user()->image}}"
+                                            style="background-color: white;" />
                                     </div>
                                     <div class="content">
                                         <h5 class="name">
-                                            <a href="#">john doe</a>
+                                            <a href="#">{{Auth::user()->name}}</a>
                                         </h5>
-                                        <span class="email">johndoe@example.com</span>
+                                        <span class="email">{{Auth::user()->email}}</span>
+                                    </div>
+                                </div>
+                                <div class="account-dropdown__body">
+                                    <div class="account-dropdown__item">
+                                        <a href="#">
+                                            <i class="zmdi zmdi-account"></i>Account</a>
                                     </div>
                                 </div>
                                 <div class="account-dropdown__footer">
-                                    <a href="#">
+                                    <a href="{{route('logout')}}">
                                         <i class="zmdi zmdi-power"></i>Logout</a>
                                 </div>
                             </div>

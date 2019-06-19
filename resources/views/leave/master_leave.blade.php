@@ -50,6 +50,7 @@
             @include('leave.header-desktop')
 
             @yield('content')
+
             <!-- END PAGE CONTAINER-->
         </div>
 

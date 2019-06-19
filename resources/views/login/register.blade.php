@@ -47,7 +47,6 @@
                                 <input class="au-input au-input--full" type="tel" name="phone"
                                     placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12">
                             </div>
-
                             <button class="au-btn au-btn--block au-btn--blue m-b-15" type="submit">Register</button>
 
                         </form>

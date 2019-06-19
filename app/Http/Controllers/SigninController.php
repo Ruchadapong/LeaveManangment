@@ -120,11 +120,16 @@ class SigninController extends Controller
             ];
             Mail::send('email.forgot_password', $messageData, function ($message) use ($email) {
                 $message->to($email)
-                    ->subject('New Password - Leave Manage');
+                    ->subject('New Password - Leave Management');
             });
             return redirect('/')->with('flash_forgot_success', 'Please check your email for new password!');
         }
         return view('login.forgot-password');
+    }
+    public function logout()
+    {
+        Auth::logout();
+        return redirect('/')->with('flash_logout_success', 'Logged out Successfully');
     }
 
     public function dashboard()

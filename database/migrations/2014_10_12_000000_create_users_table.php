@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('department')->nullable();
             $table->string('phone')->nullable();
+            $table->string('image')->default('image_1.png');
             $table->boolean('permission')->default(1);
             $table->tinyInteger('status')->nullable();
             $table->rememberToken();

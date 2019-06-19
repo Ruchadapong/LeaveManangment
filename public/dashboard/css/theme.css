@@ -1578,7 +1578,7 @@ section {
 .menu-sidebar .logo {
     background: #f5f5f5;
     height: 75px;
-    padding: 0 35px;
+    padding: 0 55px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -moz-box;
@@ -4468,9 +4468,9 @@ section {
 }
 
 @media (min-width: 1200px) {
-    .table-responsive-data2 {
+    /* .table-responsive-data2 {
         overflow: visible;
-    }
+    } */
 }
 
 .table-data2 {
@@ -4479,13 +4479,13 @@ section {
 }
 
 .table-data2.table thead th {
-    font-size: 12px;
+    font-size: 14px;
     color: #555;
     text-transform: uppercase;
     border: none;
     font-weight: 600;
     vertical-align: top;
-    padding: 15px 40px;
+    padding: 15px 25px;
     padding-right: 10px;
 }
 
@@ -4504,7 +4504,7 @@ section {
     -webkit-border-bottom-left-radius: 3px;
     -moz-border-radius-bottomleft: 3px;
     border-bottom-left-radius: 3px;
-    vertical-align: top;
+    vertical-align: middle;
 }
 
 .table-data2.table tbody tr td:first-child .au-checkbox {
@@ -4528,14 +4528,14 @@ section {
     -webkit-border-bottom-right-radius: 3px;
     -moz-border-radius-bottomright: 3px;
     border-bottom-right-radius: 3px;
-    padding-right: 35px;
+    padding-right: 15px;
 }
 
 .table-data2.table tbody td {
     font-size: 14px;
     color: #808080;
     vertical-align: middle;
-    padding: 25px 40px;
+    padding: 15px 25px;
     padding-right: 10px;
     border: none;
 }
@@ -4644,12 +4644,11 @@ section {
     font-size: 14px;
     color: #808080;
     display: inline-block;
-    background: #f2f2f2;
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     border-radius: 2px;
     line-height: 30px;
-    padding: 0 14px;
+
 }
 
 .status--process {

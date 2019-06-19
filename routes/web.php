@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,12 +20,21 @@ Route::match(['get', 'post'], '/', 'SigninController@login')->name('login');
 Route::match(['get', 'post'], '/register', 'SigninController@register')->name('register');
 Route::get('/confirm/{code}', 'SigninController@confirmAccount')->name('confirm');
 Route::match(['get', 'post'], '/forgot-password', 'SigninController@forgotPassword')->name('forgot-password');
+Route::get('/logout', 'SigninController@logout')->name('logout');
 
 
 
-Route::group(['middleware' => 'admin'], function () {
-    Route::get('/leave-management', 'SigninController@dashboard')->name('leave-management');
+Route::group(['middleware' => ['admin', 'auth']], function () {
+    Route::get('leave-management', 'SigninController@dashboard')->name('leave-management');
+    Route::get('/staff', 'StaffController@add')->name('staff.view');
 });
+
+// Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {
+//     Route::match(['get', 'post'], '/view', 'StaffController@add')->name('view');
+// });
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::get('/leave-management', 'SigninController@dashboard')->name('leave-management');
+// });
 
 
 
