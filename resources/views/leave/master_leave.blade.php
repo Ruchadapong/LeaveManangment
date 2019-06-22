@@ -80,6 +80,8 @@
     <!-- Main JS-->
     <script src="{{asset('dashboard/js/main.js')}}"></script>
 
+    @yield('script')
+
 
 </body>
 

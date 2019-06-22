@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class SigninController extends Controller
 {
@@ -27,10 +28,14 @@ class SigninController extends Controller
                 return redirect('/')->with('flash_alert_errors', 'Email or Password incorrect!')->withInput();
             }
         }
+
+
+
         return view('login.login');
     }
     public function register(Request $request)
     {
+
         if ($request->isMethod('post')) {
 
             $data = $request->all();
@@ -50,6 +55,8 @@ class SigninController extends Controller
                 $users->password = bcrypt($data['password']);
                 $users->department = $data['department'];
                 $users->phone = $data['phone'];
+                // $users->created_at = $data['created_at'];
+                // $users->update_at = $data['update_at'];
 
                 $users->save();
 

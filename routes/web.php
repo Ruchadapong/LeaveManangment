@@ -26,7 +26,8 @@ Route::get('/logout', 'SigninController@logout')->name('logout');
 
 Route::group(['middleware' => ['admin', 'auth']], function () {
     Route::get('leave-management', 'SigninController@dashboard')->name('leave-management');
-    Route::get('/staff', 'StaffController@add')->name('staff.view');
+    Route::get('/staff', 'StaffController@view')->name('staff.view');
+    Route::match(['get', 'post'], '/add-staff', 'StaffController@add')->name('staff.add');
 });
 
 // Route::group(['prefix' => 'staff', 'as' => 'staff.'], function () {

@@ -11,6 +11,7 @@
                 <div class="login-content">
                     <div class="login-logo">
                         <h1> SIGN-IN PAGE </h1>
+                        
                         {{-- <img src="{{asset('img/logo_mi.png')}}" width="200" height="100"> --}}
 
                     </div>

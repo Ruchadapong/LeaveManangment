@@ -25,47 +25,67 @@
                             </div>
                         </div>
                         <div class="table-data__tool-right">
-                            <button class="au-btn au-btn-icon au-btn--green au-btn--small">
-                                <i class="zmdi zmdi-plus"></i>add item</button>
+                            <a href="{{route('staff.add')}}"><button class="btn btn-outline-success btn-md">
+                                    <i class="zmdi zmdi-plus"></i>&nbsp;ADD ITEM</button></a>
                         </div>
                     </div>
                     <div class="table-responsive table-responsive-data2">
                         <table class="table table-data2">
-                            <thead>
+                            <thead class="text-center">
                                 <tr>
                                     <th></th>
-                                    <th>name</th>
+                                    <th style="padding-left:17px;">name</th>
                                     <th>email</th>
                                     <th>department</th>
-                                    <th>phone</th>
+                                    <th style="padding-left:40px; padding-right:40px;">phone</th>
                                     <th>permisstion</th>
                                     <th>status</th>
+                                    <th>leave day</th>
                                     <th>action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($users as $user)
 
-                                <tr class="tr-shadow">
-                                    <td>img 1</td>
-                                    <td>Lori Lynch</td>
+
+                                <tr class="tr-shadow text-center">
+                                    <td class="d-sm-none d-md-block" style="width:100px;">@if(!empty($user->image))
+                                        <img src="{{asset('/dashboard/images/icon/'.$user->image)}}" width="100%"
+                                            style="background-color: white;">
+                                        @endif</td>
+                                    <td>{{$user->name}}</td>
                                     <td>
-                                        <span class="block-email">lori@example.com</span>
+                                        <span class="block-email">{{$user->email}}</span>
                                     </td>
-                                    <td class="desc">Samsung S8 Black</td>
-                                    <td>2018-09-27 02:12</td>
+                                    <td class="desc">{{$user->department}}</td>
+                                    <td>{{$user->phone}}</td>
                                     <td>
-                                        <span class="status--process">Processed</span>
+                                        @if ($user->permission == 0)
+
+                                        <span class="role admin">ADMIN</span>
+                                        @elseif($user->permission == 1)
+                                        <span class="role user">USER</span>
+                                        @endif
                                     </td>
-                                    <td>$679.00</td>
+                                    <td>@if ($user->status == 1)
+
+                                        <span class="role member">ACTIVE</span>
+                                        @elseif($user->status == 0)
+                                        <span class="role inactive">INACTIVE</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <span class="text-danger">{{$user->leave_day}}</span>
+                                    </td>
                                     <td>
 
                                         <ul class="list-inline">
                                             <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Edit!"><i
+                                                    data-placement="top" title="Edit!"><i
                                                         class="fas fa-edit fa-lg"></i></a>
                                             </li>
                                             <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Delete!"><i
+                                                    data-placement="top" title="Delete!"><i
                                                         class="fas fa-scissors fa-lg"></i></a></li>
 
                                         </ul>
@@ -73,83 +93,7 @@
                                     </td>
                                 </tr>
                                 <tr class="spacer"></tr>
-                                <tr class="tr-shadow">
-                                    <td>img 2</td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">john@example.com</span>
-                                    </td>
-                                    <td class="desc">iPhone X 64Gb Grey</td>
-                                    <td>2018-09-29 05:57</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>$999.00</td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Edit!"><i
-                                                        class="fas fa-edit fa-lg"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Delete!"><i
-                                                        class="fas fa-scissors fa-lg"></i></a></li>
-
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr class="spacer"></tr>
-                                <tr class="tr-shadow">
-                                    <td>img 3</td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">lyn@example.com</span>
-                                    </td>
-                                    <td class="desc">iPhone X 256Gb Black</td>
-                                    <td>2018-09-25 19:03</td>
-                                    <td>
-                                        <span class="status--denied">Denied</span>
-                                    </td>
-                                    <td>$1199.00</td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Edit!"><i
-                                                        class="fas fa-edit fa-lg"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Delete!"><i
-                                                        class="fas fa-scissors fa-lg"></i></a></li>
-
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr class="spacer"></tr>
-                                <tr class="tr-shadow">
-                                    <td>img 4</td>
-                                    <td>Lori Lynch</td>
-                                    <td>
-                                        <span class="block-email">doe@example.com</span>
-                                    </td>
-                                    <td class="desc">Camera C430W 4k</td>
-                                    <td>2018-09-24 19:10</td>
-                                    <td>
-                                        <span class="status--process">Processed</span>
-                                    </td>
-                                    <td>$699.00</td>
-                                    <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Edit!"><i
-                                                        class="fas fa-edit fa-lg"></i></a>
-                                            </li>
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="left" title="Delete!"><i
-                                                        class="fas fa-scissors fa-lg"></i></a></li>
-
-                                        </ul>
-                                    </td>
-                                </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>

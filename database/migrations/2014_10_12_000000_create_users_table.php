@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Carbon\Carbon;
 
 class CreateUsersTable extends Migration
 {
@@ -23,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('image')->default('image_1.png');
             $table->boolean('permission')->default(1);
             $table->tinyInteger('status')->nullable();
+            $table->integer('leave_day')->default(30);
             $table->rememberToken();
             $table->timestamps();
         });
