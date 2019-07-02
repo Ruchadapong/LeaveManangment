@@ -312,7 +312,7 @@
                                         <td>
 
                                           <div align='left'>
-                                            <span style='text-align: right;'>Thank
+                                            <span style='text-align: right;'>Thanks
                                               & Regards</span>,
                                             <br>
                                             <span style='color:#222222;'>Leave-Manangment</span>

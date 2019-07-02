@@ -31,6 +31,8 @@
     <link href="{{asset('dashboard/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('dashboard/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('dashboard/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('dashboard/css/passtrength.css')}}" rel="stylesheet" media="all">
+
 
     <!-- Main CSS-->
     <link href="{{asset('dashboard/css/theme.css')}}" rel="stylesheet" media="all">
@@ -57,28 +59,31 @@
     </div>
 
     <!-- Jquery JS-->
-    <script src="{{('dashboard/vendor/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/jquery-3.2.1.min.js')}}"></script>
     <!-- Bootstrap JS-->
-    <script src="{{('dashboard/vendor/bootstrap-4.1/popper.min.js')}}"></script>
-    <script src="{{('dashboard/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/bootstrap-4.1/popper.min.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/bootstrap-4.1/bootstrap.min.js')}}"></script>
     <!-- Vendor JS       -->
-    <script src="{{('dashboard/vendor/slick/slick.min.js')}}">
+    <script src="{{asset('dashboard/vendor/slick/slick.min.js')}}">
     </script>
-    <script src="{{('dashboard/vendor/wow/wow.min.js')}}"></script>
-    <script src="{{('dashboard/vendor/animsition/animsition.min.js')}}"></script>
-    <script src="{{('dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
+    <script src="{{asset('dashboard/vendor/wow/wow.min.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/animsition/animsition.min.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}">
     </script>
-    <script src="{{('dashboard/vendor/counter-up/jquery.waypoints.min.js')}}"></script>
-    <script src="{{('dashboard/vendor/counter-up/jquery.counterup.min.js')}}">
+    <script src="{{asset('dashboard/vendor/counter-up/jquery.waypoints.min.js')}}"></script>
+    <script src="{{asset('dashboard/vendor/counter-up/jquery.counterup.min.js')}}">
     </script>
     <script src="{{asset('dashboard/vendor/circle-progress/circle-progress.min.js')}}"></script>
     <script src="{{asset('dashboard/vendor/perfect-scrollbar/perfect-scrollbar.js')}}"></script>
     <script src="{{asset('dashboard/vendor/chartjs/Chart.bundle.min.js')}}"></script>
-    <script src="{{asset('dashboard/vendor/select2/select2.min.js')}}">
-    </script>
+    <script src="{{asset('dashboard/vendor/select2/select2.min.js')}}"></script>
+    <script src="{{asset('dashboard/js/jquery.maskedinput.min.js')}}"></script>
+    <script src="{{asset('dashboard/js/jquery.validate.min.js')}}"></script>
+    <script src="{{asset('dashboard/js/jquery.passtrength.js')}}"></script>
 
     <!-- Main JS-->
     <script src="{{asset('dashboard/js/main.js')}}"></script>
+    <script src="{{asset('dashboard/js/my.script.js')}}"></script>
 
     @yield('script')
 

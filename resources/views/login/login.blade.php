@@ -11,7 +11,7 @@
                 <div class="login-content">
                     <div class="login-logo">
                         <h1> SIGN-IN PAGE </h1>
-                        
+
                         {{-- <img src="{{asset('img/logo_mi.png')}}" width="200" height="100"> --}}
 
                     </div>
@@ -26,7 +26,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input class="au-input au-input--full" type="password" name="password" id="password"
+                                <input class="au-input au-input--full" type="password" name="password"
                                     placeholder="Password" required>
                             </div>
                             <div class="login-checkbox float-right">

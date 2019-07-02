@@ -14,20 +14,22 @@
 
                     </div>
                     <div class="login-form">
-                        <form action="{{url('/register')}}" method="post" name="register">
+                        <form action="{{url('/register')}}" method="post" name="register" id="registerUser">
                             @csrf
                             <div class="form-group">
                                 <label>Name</label>
-                                <input class="au-input au-input--full" type="text" name="name" placeholder="Name">
+                                <input class="au-input au-input--full" type="text" name="name" placeholder="Name"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label>Password</label>
-                                <input class="au-input au-input--full" type="password" name="password"
+                                <input class="au-input au-input--full" type="password" name="password" id="password"
                                     placeholder="Password">
                             </div>
                             <div class="form-group">
                                 <label>E-mail Address</label>
-                                <input class="au-input au-input--full" type="email" name="email" placeholder="E-mail">
+                                <input class="au-input au-input--full" type="email" name="email" placeholder="E-mail"
+                                    required>
                             </div>
                             <div class="form-group">
                                 <label>Department</label>
@@ -44,10 +46,10 @@
                             </div>
                             <div class="form-group">
                                 <label>Phone <small> (format : 012-345-6789)</small></label>
-                                <input class="au-input au-input--full" type="tel" name="phone"
-                                    placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12">
+                                <input class="au-input au-input--full" type="tel" name="phone" id="phone"
+                                    placeholder="xxx-xxx-xxxx">
                             </div>
-                            
+
                             <button class="au-btn au-btn--block au-btn--blue m-b-15" type="submit">Register</button>
 
                         </form>

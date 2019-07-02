@@ -26,7 +26,7 @@
                         </div>
                         <div class="table-data__tool-right">
                             <a href="{{route('staff.add')}}"><button class="btn btn-outline-success btn-md">
-                                    <i class="zmdi zmdi-plus"></i>&nbsp;ADD ITEM</button></a>
+                                    <i class="zmdi zmdi-plus"></i>&nbsp;ADD STAFF</button></a>
                         </div>
                     </div>
                     <div class="table-responsive table-responsive-data2">
@@ -80,13 +80,14 @@
                                     <td>
 
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="top" title="Edit!"><i
+                                            <li class="list-inline-item"><a href="{{route('staff.edit',[$user->id])}}"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit!"><i
                                                         class="fas fa-edit fa-lg"></i></a>
                                             </li>
                                             <li class="list-inline-item"><a href="#" data-toggle="tooltip"
                                                     data-placement="top" title="Delete!"><i
-                                                        class="fas fa-scissors fa-lg"></i></a></li>
+                                                        class="fas fa-scissors fa-lg"></i></a>
+                                            </li>
 
                                         </ul>
 
@@ -114,4 +115,18 @@
         </div>
     </div>
 </footer>
+@include('sweet::alert')
+<script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
+@if(Session::has('flash_alert_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: 'Add staff successfully!',
+        text: '{!! Session::get('flash_alert_success') !!}',
+
+        })
+</script>
+
+@endif
+
 @endsection

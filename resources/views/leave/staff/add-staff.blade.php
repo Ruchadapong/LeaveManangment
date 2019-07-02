@@ -16,10 +16,12 @@
                             <strong>ADD STAFF</strong>
                         </div>
                         <div class="card-body card-block">
-                            <form action="" method="post" enctype="multipart/form-data" class="form-horizontal">
+                            <form action="{{route('staff.add')}}" method="post" enctype="multipart/form-data"
+                                class="form-horizontal" id="addStaff">
+                                @csrf
                                 <div class="row form-group">
                                     <div class="col-4 col-md-3">
-                                        <label class=" form-control-label">Name</label>
+                                        <label class="form-control-label">Name</label>
                                     </div>
                                     <div class="col-8 col-md-6">
                                         <input type="text" id="name" name="name" placeholder="Name"
@@ -67,7 +69,7 @@
                                     </div>
                                     <div class="col-8 col-md-6">
                                         <input class="form-control" type="tel" name="phone" id="phone"
-                                            placeholder="Phone number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                                            placeholder="xxx-xxx-xxxx" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
                                             maxlength="12">
                                         <small class="form-text text-muted">format :
                                             012-345-6789</small>
@@ -78,13 +80,16 @@
                                         <label class=" form-control-label">Permission</label>
                                     </div>
                                     <div class="col-8 col-md-6">
-                                        <div class="radio radio-danger radio-inline form-check-inline">
-                                            <input type="radio" id="permisstion1" value="0" name="permisstion">
-                                            <label for="permisstion"> ADMIN </label>
-                                        </div>
-                                        <div class="radio radio-info radio-inline form-check-inline">
-                                            <input type="radio" id="permisstion2" value="1" name="permisstion" checked>
-                                            <label for="permisstion"> STAFF</label>
+                                        <div class="form-check-inline">
+                                            <label class="radio form-check-inline" for="permission1"
+                                                id="permission_admin">ADMIN
+                                                <input type="radio" id="permission1" name="permission">
+                                                <span class="checkround"></span>
+                                            </label>
+                                            <label class="radio form-check-inline" for="permission2">STAFF
+                                                <input type="radio" id="permission2" name="permission" checked>
+                                                <span class="checkround"></span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -93,13 +98,16 @@
                                         <label class=" form-control-label">Status</label>
                                     </div>
                                     <div class="col-8 col-md-6">
-                                        <div class="radio radio-primary radio-inline form-check-inline">
-                                            <input type="radio" id="status1" value="1" name="status">
-                                            <label for="status"> ACTIVE </label>
-                                        </div>
-                                        <div class="radio radio-secondary radio-inline form-check-inline">
-                                            <input type="radio" id="status2" value="0" name="status" checked>
-                                            <label for="inlineRadio2">INACTIVE</label>
+                                        <div class="form-check-inline">
+                                            <label class="radio form-check-inline" for="status1"
+                                                id="status_active">ACTIVE
+                                                <input type="radio" id="status1" name="status">
+                                                <span class="checkround"></span>
+                                            </label>
+                                            <label class="radio form-check-inline" for="status2">INACTIVE
+                                                <input type="radio" id="status2" name="status" checked>
+                                                <span class="checkround"></span>
+                                            </label>
                                         </div>
                                     </div>
                                 </div>
@@ -139,43 +147,56 @@
 
 @section('script')
 <script>
-    $('.radio-primary').on('click', function() {
+    $('#permission_admin').on('click', function() {
        Swal.fire({
             title: 'Are you sure?',
-            text: "You won't be able to revert this!",
+            text: "To change status from INACIVET to ACTIVE",
             type: 'warning',
             showCancelButton: true,
+            allowEscapeKey: false,
+            allowOutsideClick: false,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
+            confirmButtonText: 'Yes, change!'
         }).then((result) => {
             if (result.value) {
                 Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
+                'Change!',
+                'Your change status successfully.',
                 'success'
                 )
-                $("#status1").attr("checked");
+
+            }else if (
+            // Read more about handling dismissals
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+                $("#permission2").prop("checked", true);
             }
         })
     });
-    $('.radio-danger').on('click', function() {
+    $('#status_active').on('click', function() {
         Swal.fire({
         title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        text: "To change permission from STAFF to ADMIN",
         type: 'warning',
         showCancelButton: true,
+        allowEscapeKey: false,
+        allowOutsideClick: false,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes, change!'
         }).then((result) => {
             if (result.value) {
                 Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
+                'Change!',
+                'Your change permission successfully.',
                 'success'
             )
-            $("#permission1").attr("checked");
+            }else if (
+            // Read more about handling dismissals
+            result.dismiss === Swal.DismissReason.cancel
+            ) {
+            $("#status2").prop("checked", true);
             }
         })
     });

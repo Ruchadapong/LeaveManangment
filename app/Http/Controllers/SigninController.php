@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
-use Carbon\Carbon;
 
 class SigninController extends Controller
 {
@@ -142,5 +141,29 @@ class SigninController extends Controller
     public function dashboard()
     {
         return view('leave.content');
+    }
+
+    public function checkEmail(Request $request)
+    {
+        $data = $request->all();
+        $emailCount = User::where('email', $data['email'])->count();
+        if ($emailCount > 0) {
+            echo "false";
+        } else {
+            echo "true";
+            die;
+        }
+    }
+
+    public function checkName(Request $request)
+    {
+        $data = $request->all();
+        $nameCount = User::where('name', $data['name'])->count();
+        if ($nameCount > 0) {
+            echo "false";
+        } else {
+            echo "true";
+            die;
+        }
     }
 }
