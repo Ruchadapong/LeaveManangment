@@ -84,11 +84,12 @@
                                                     data-toggle="tooltip" data-placement="top" title="Edit!"><i
                                                         class="fas fa-edit fa-lg"></i></a>
                                             </li>
-                                            <li class="list-inline-item"><a href="#" data-toggle="tooltip"
-                                                    data-placement="top" title="Delete!"><i
-                                                        class="fas fa-scissors fa-lg"></i></a>
-                                            </li>
+                                            <li class="list-inline-item ">
+                                                <a href="javascript:" rel="{{ $user->id }}" rel1="delete"
+                                                    class="deleteData" data-toggle="tooltip" data-placement="top"
+                                                    title="Delete!"><i class="fas fa-scissors fa-lg"></i></a>
 
+                                            </li>
                                         </ul>
 
                                     </td>
@@ -123,6 +124,18 @@
         type: 'success',
         title: 'Add staff successfully!',
         text: '{!! Session::get('flash_alert_success') !!}',
+
+        })
+</script>
+
+@endif
+
+@if(Session::has('flash_message_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: 'Delete staff successfully!',
+        text: '{!! Session::get('flash_message_success') !!}',
 
         })
 </script>

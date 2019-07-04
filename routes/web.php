@@ -37,6 +37,7 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
     //group leave-management
     Route::group(['prefix' => 'leave-management'], function () {
         Route::get('/', 'SigninController@dashboard')->name('leave-management');
+        Route::match(['get', 'post'], 'delete/{id}', 'StaffController@delete')->name('staff.delete');
 
         Route::group(['prefix' => 'staff'], function () {
 

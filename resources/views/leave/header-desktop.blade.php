@@ -126,7 +126,7 @@
                     <div class="account-wrap">
                         <div class="account-item clearfix js-item-menu">
                             <div class="image">
-                                <img src="{{asset('dashboard/images/icon').'/'.Auth::user()->image}}"
+                                <img src="{{asset('dashboard/images/user/small').'/'.Auth::user()->image}}"
                                     style="background-color: white;" />
                             </div>
                             <div class="content">
@@ -135,7 +135,7 @@
                             <div class="account-dropdown js-dropdown">
                                 <div class="info clearfix">
                                     <div class="image">
-                                        <img src="{{asset('dashboard/images/icon').'/'.Auth::user()->image}}"
+                                        <img src="{{asset('dashboard/images/user/small').'/'.Auth::user()->image}}"
                                             style="background-color: white;" />
                                     </div>
                                     <div class="content">

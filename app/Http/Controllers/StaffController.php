@@ -105,6 +105,9 @@ class StaffController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->all();
             //upload image
+            // echo "<pre>";
+            // print_r($data);
+            // die;
             if ($request->hasFile('image')) {
                 $image_tmp = Input::file('image');
                 if ($image_tmp->isValid()) {
@@ -127,5 +130,12 @@ class StaffController extends Controller
         $staffDetails = User::where(['id' => $id])->first();
         /*ค้นหาข้อมูลจาก id ในตาราง user */
         return view('leave.staff.edit-staff')->with(compact('staffDetails'));
+    }
+
+    public function delete($id)
+    {
+        User::where(['id' => $id])->delete();
+
+        return redirect()->back()->with('flash_message_success', 'STAFF has been deleted successfully');
     }
 }

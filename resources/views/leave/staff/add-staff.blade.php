@@ -83,11 +83,12 @@
                                         <div class="form-check-inline">
                                             <label class="radio form-check-inline" for="permission1"
                                                 id="permission_admin">ADMIN
-                                                <input type="radio" id="permission1" name="permission">
+                                                <input type="radio" id="permission1" name="permission" value="0">
                                                 <span class="checkround"></span>
                                             </label>
                                             <label class="radio form-check-inline" for="permission2">STAFF
-                                                <input type="radio" id="permission2" name="permission" checked>
+                                                <input type="radio" id="permission2" name="permission" value="1"
+                                                    checked>
                                                 <span class="checkround"></span>
                                             </label>
                                         </div>
@@ -101,11 +102,11 @@
                                         <div class="form-check-inline">
                                             <label class="radio form-check-inline" for="status1"
                                                 id="status_active">ACTIVE
-                                                <input type="radio" id="status1" name="status">
+                                                <input type="radio" id="status1" name="status" value="1">
                                                 <span class="checkround"></span>
                                             </label>
                                             <label class="radio form-check-inline" for="status2">INACTIVE
-                                                <input type="radio" id="status2" name="status" checked>
+                                                <input type="radio" id="status2" name="status" value="0" checked>
                                                 <span class="checkround"></span>
                                             </label>
                                         </div>
