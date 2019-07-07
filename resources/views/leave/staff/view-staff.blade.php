@@ -30,27 +30,21 @@
                         </div>
                     </div>
                     <div class="table-responsive table-responsive-data2">
-                        <table class="table table-data2">
+                        <table class="table table-data2" id="data">
                             <thead class="text-center">
                                 <tr>
                                     <th></th>
                                     <th style="padding-left:17px;">name</th>
                                     <th>email</th>
                                     <th>department</th>
-                                    <th style="padding-left:40px; padding-right:40px;">phone</th>
-                                    <th>permisstion</th>
-                                    <th>status</th>
-                                    <th>leave day</th>
                                     <th>action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-
-
                                 <tr class="tr-shadow text-center">
                                     <td class="d-sm-none d-md-block" style="width:100px;">@if(!empty($user->image))
-                                        <img src="{{asset('/dashboard/images/icon/'.$user->image)}}" width="100%"
+                                        <img src="{{asset('/dashboard/images/user/large/'.$user->image)}}" width="100%"
                                             style="background-color: white;">
                                         @endif</td>
                                     <td>{{$user->name}}</td>
@@ -58,28 +52,15 @@
                                         <span class="block-email">{{$user->email}}</span>
                                     </td>
                                     <td class="desc">{{$user->department}}</td>
-                                    <td>{{$user->phone}}</td>
-                                    <td>
-                                        @if ($user->permission == 0)
 
-                                        <span class="role admin">ADMIN</span>
-                                        @elseif($user->permission == 1)
-                                        <span class="role user">USER</span>
-                                        @endif
-                                    </td>
-                                    <td>@if ($user->status == 1)
-
-                                        <span class="role member">ACTIVE</span>
-                                        @elseif($user->status == 0)
-                                        <span class="role inactive">INACTIVE</span>
-                                        @endif
-                                    </td>
                                     <td>
-                                        <span class="text-danger">{{$user->leave_day}}</span>
-                                    </td>
-                                    <td>
-
                                         <ul class="list-inline">
+                                        <li class="list-inline-item"><a href="#mediumModal{{$user->id}}"
+                                            data-tooltip="tooltip" data-toggle="modal"
+                                                    data-placement="top" title="Details!">
+                                                    <i class="fas fa-file fa-lg"></i></a>                                                  
+                                            </li>
+                                            
                                             <li class="list-inline-item"><a href="{{route('staff.edit',[$user->id])}}"
                                                     data-toggle="tooltip" data-placement="top" title="Edit!"><i
                                                         class="fas fa-edit fa-lg"></i></a>
@@ -88,13 +69,69 @@
                                                 <a href="javascript:" rel="{{ $user->id }}" rel1="delete"
                                                     class="deleteData" data-toggle="tooltip" data-placement="top"
                                                     title="Delete!"><i class="fas fa-scissors fa-lg"></i></a>
-
                                             </li>
                                         </ul>
+                                        <!-- modal medium -->
+                                            <div class="modal fade" id="mediumModal{{$user->id}}" role="dialog" aria-labelledby="mediumModalLabel"
+                                                aria-hidden="true" data-backdrop="static">
+                                                <div class="modal-dialog modal-lg modal-dialog-centered" role="document" >
+                                                    <div class="modal-content" style="background-color: #f5f5f5;">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title" id="mediumModalLabel">{{$user->name}} Details </h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body" style="background-color: #f5f5f5;">
+                                                            <div class="table-responsive table-responsive-data2">
+                                                                <table class="table table-data2" id="tableStaff">
+                                                                    <thead class="text-center">
+                                                                        <tr>
+                                                                            <th>permisstion</th>
+                                                                            <th>Status</th>
+                                                                            <th style="padding-left:40px; padding-right:40px;">phone</th>
+                                                                            <th>Leave Day</th>
+                                                                        </tr>
+                                                                    </thead>
+                                                                    <tbody>
+                                                                            <tr class="tr-shadow text-center">
+                                                                            <td>
+                                                                                @if ($user->permission == 0)
+                                                                                <span class="role admin">ADMIN</span>
+                                                                                @elseif($user->permission == 1)
+                                                                                <span class="role user">USER</span>
+                                                                                @endif
+                                                                            </td>
+                                                                            <td>@if ($user->status == 1)
+                                                                                <span class="role member">ACTIVE</span>
+                                                                                @elseif($user->status == 0)
+                                                                                <span class="role inactive">INACTIVE</span>
+                                                                                @endif
+                                                                            </td>
+                                                                            <td>{{$user->phone}}</td>
+                                                                            <td>
+                                                                                <span class="text-danger">{{$user->leave_day}}</span>
+                                                                            </td>
 
+                                                                        </tr>
+                                                                        <tr class="spacer"></tr>
+                                                                        
+                                                                    </tbody>
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- end modal medium -->
                                     </td>
+                                    
                                 </tr>
                                 <tr class="spacer"></tr>
+                                
                                 @endforeach
                             </tbody>
                         </table>
@@ -107,6 +144,9 @@
     </div>
 
 </div>
+
+
+
 <footer id="sticky-footer">
     <div class="row">
         <div class="col-md-12">

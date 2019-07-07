@@ -33,6 +33,7 @@
     <link href="{{asset('dashboard/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('dashboard/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('dashboard/css/passtrength.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('dashboard/css/datatables.css')}}" rel="stylesheet" media="all">
 
 
     <!-- Main CSS-->
@@ -81,6 +82,7 @@
     <script src="{{asset('dashboard/js/jquery.maskedinput.min.js')}}"></script>
     <script src="{{asset('dashboard/js/jquery.validate.min.js')}}"></script>
     <script src="{{asset('dashboard/js/jquery.passtrength.js')}}"></script>
+    <script src="{{asset('dashboard/js/datatables.js')}}"></script>
 
     <!-- Main JS-->
     <script src="{{asset('dashboard/js/main.js')}}"></script>

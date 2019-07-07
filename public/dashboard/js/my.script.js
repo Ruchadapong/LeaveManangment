@@ -1,4 +1,5 @@
-$().ready(function () {
+$(document).ready(function () {
+
     $('#phone').mask("999-999-9999", {
         placeholder: "xxx-xxx-xxxx"
     })
@@ -91,9 +92,6 @@ $().ready(function () {
         tooltip: true,
         eyeImg: "/img/eye.svg"
     });
-})
-
-$(document).ready(function () {
 
     $(document).on('click', '.deleteData', function (e) {
         var id = $(this).attr('rel');
@@ -147,6 +145,10 @@ $(document).ready(function () {
     $("#imgInp").change(function () {
         readURL(this);
     });
+
+    $('[data-tooltip="tooltip"]').tooltip();
+
+    $('.modal').appendTo("body").modal('hide');
 
 });
 
