@@ -4547,6 +4547,10 @@ section {
     color: #4272d7;
 }
 
+.table-data2.table tbody td.position {
+    color: #089b14;
+}
+
 .table-data2 .spacer {
     height: 5px;
     background: transparent;

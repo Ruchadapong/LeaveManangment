@@ -1,6 +1,5 @@
 <?php
 
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,14 +35,20 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
 
     //group leave-management
     Route::group(['prefix' => 'leave-management'], function () {
+        //home page
         Route::get('/', 'SigninController@dashboard')->name('leave-management');
+        //delete staff
         Route::match(['get', 'post'], 'delete/{id}', 'StaffController@delete')->name('staff.delete');
-
+        //group staff
         Route::group(['prefix' => 'staff'], function () {
-
+            //view staff
             Route::get('/', 'StaffController@view')->name('staff.view');
+            //add staff
             Route::match(['get', 'post'], '/add-staff', 'StaffController@add')->name('staff.add');
+            //edit staff
             Route::match(['get', 'post'], '/edit-staff/{id}', 'StaffController@edit')->name('staff.edit');
+            //search staff
+            Route::post('/search', 'StaffController@search')->name('staff.search');
         });
     });
 });

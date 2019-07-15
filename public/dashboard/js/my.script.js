@@ -150,5 +150,7 @@ $(document).ready(function () {
 
     $('.modal').appendTo("body").modal('hide');
 
+
+
 });
 

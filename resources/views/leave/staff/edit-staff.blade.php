@@ -66,7 +66,16 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-4 col-md-3">
-                                        <label for="leave_day" class=" form-control-label">Leave Days</label>
+                                        <label class="form-control-label">Position</label>
+                                    </div>
+                                    <div class="col-8 col-md-6">
+                                        <input type="text" id="position" name="position"
+                                            value="{{$staffDetails->position}}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-4 col-md-3">
+                                        <label for="leave_day" class=" form-control-label">Leave Balance</label>
                                     </div>
                                     <div class="col-8 col-md-6">
                                         <input type="number" id="leave_day" name="leave_day"
@@ -83,6 +92,16 @@
                                             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" maxlength="12">
                                         <small class="form-text text-muted">format :
                                             012-345-6789</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-4 col-md-3">
+                                        <label class="form-control-label">Office Phone</label>
+                                    </div>
+                                    <div class="col-8 col-md-6">
+                                        <input type="tel" id="office_phone" name="office_phone"
+                                            placeholder="Office Phone" value="{{$staffDetails->office_phone}}"
+                                            maxlength="4" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group m-t-20">

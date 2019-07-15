@@ -15,7 +15,6 @@
                     <h3 class="title-5 m-b-35">Staff table</h3>
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
-                            <!-- form search -->
                             <form action="{{route('staff.search')}}" method="post" name="search" id="search">
                                 @csrf
                                 <div class="input-group">
@@ -29,7 +28,6 @@
                                 </div>
                             </form>
                         </div>
-                        <!-- go page add staff -->
                         <div class="table-data__tool-right">
                             <a href="{{route('staff.add')}}"><button class="btn btn-outline-success btn-md">
                                     <i class="zmdi zmdi-plus"></i>&nbsp;ADD STAFF</button></a>
@@ -48,45 +46,50 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
-
+                                @if (empty($searches))
+                                <tr class="tr-shadow text-center" id="noresults">
+                                    <td colspan="6">No Results</td>
+                                </tr>
+                                @else
+                                @foreach ($searches as $search)
                                 <tr class="tr-shadow text-center">
-                                    <td class="d-sm-none d-md-block" style="width:100px;">@if(!empty($user->image))
-                                        <img src="{{asset('/dashboard/images/user/large/'.$user->image)}}" width="100%"
-                                            style="background-color: white;">
+                                    <td class="d-sm-none d-md-block" style="width:100px;">@if(!empty($search->image))
+                                        <img src="{{asset('/dashboard/images/user/large/'.$search->image)}}"
+                                            width="100%" style="background-color: white;">
                                         @endif</td>
-                                    <td>{{$user->name}}</td>
+                                    <td>{{$search->name}}</td>
                                     <td>
-                                        <span class="block-email">{{$user->email}}</span>
+                                        <span class="block-email">{{$search->email}}</span>
                                     </td>
-                                    <td class="desc">{{$user->department}}</td>
-                                    <td class="position">{{$user->position}}</td>
+                                    <td class="desc">{{$search->department}}</td>
+                                    <td class="position">{{$search->position}}</td>
+
                                     <td>
                                         <ul class="list-inline">
-                                            <li class="list-inline-item"><a href="#mediumModal{{$user->id}}"
+                                            <li class="list-inline-item"><a href="#mediumModal{{$search->id}}"
                                                     data-tooltip="tooltip" data-toggle="modal" data-placement="top"
                                                     title="Details!">
                                                     <i class="fas fa-file fa-lg"></i></a>
                                             </li>
 
-                                            <li class="list-inline-item"><a href="{{route('staff.edit',[$user->id])}}"
+                                            <li class="list-inline-item"><a href="{{route('staff.edit',[$search->id])}}"
                                                     data-toggle="tooltip" data-placement="top" title="Edit!"><i
                                                         class="fas fa-edit fa-lg"></i></a>
                                             </li>
                                             <li class="list-inline-item ">
-                                                <a href="javascript:" rel="{{ $user->id }}" rel1="delete"
+                                                <a href="javascript:" rel="{{ $search->id }}" rel1="delete"
                                                     class="deleteData" data-toggle="tooltip" data-placement="top"
                                                     title="Delete!"><i class="fas fa-scissors fa-lg"></i></a>
                                             </li>
                                         </ul>
-                                        <!-- modal details staff -->
-                                        <div class="modal fade" id="mediumModal{{$user->id}}" role="dialog"
+                                        <!-- modal medium -->
+                                        <div class="modal fade" id="mediumModal{{$search->id}}" role="dialog"
                                             aria-labelledby="mediumModalLabel" aria-hidden="true"
                                             data-backdrop="static">
                                             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                                                 <div class="modal-content" style="background-color: #f5f5f5;">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title" id="mediumModalLabel">{{$user->name}}
+                                                        <h5 class="modal-title" id="mediumModalLabel">{{$search->name}}
                                                             Details </h5>
                                                         <button type="button" class="close" data-dismiss="modal"
                                                             aria-label="Close">
@@ -110,23 +113,23 @@
                                                                     <tr class="tr-shadow text-center">
 
                                                                         <td>
-                                                                            @if ($user->permission == 0)
+                                                                            @if ($search->permission == 0)
                                                                             <span class="role admin">ADMIN</span>
-                                                                            @elseif($user->permission == 1)
+                                                                            @elseif($search->permission == 1)
                                                                             <span class="role user">USER</span>
                                                                             @endif
                                                                         </td>
-                                                                        <td>@if ($user->status == 1)
+                                                                        <td>@if ($search->status == 1)
                                                                             <span class="role member">ACTIVE</span>
-                                                                            @elseif($user->status == 0)
+                                                                            @elseif($search->status == 0)
                                                                             <span class="role inactive">INACTIVE</span>
                                                                             @endif
                                                                         </td>
-                                                                        <td>{{$user->phone}}</td>
-                                                                        <td>{{$user->office_phone}}</td>
+                                                                        <td>{{$search->phone}}</td>
+                                                                        <td>{{$search->office_phone}}</td>
                                                                         <td>
                                                                             <span
-                                                                                class="text-danger">{{$user->leave_day}}</span>
+                                                                                class="text-danger">{{$search->leave_day}}</span>
                                                                         </td>
 
                                                                     </tr>
@@ -143,17 +146,16 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <!-- end modal details staff -->
+                                        <!-- end modal medium -->
                                     </td>
 
                                 </tr>
                                 <tr class="spacer"></tr>
 
                                 @endforeach
+                                @endif
                             </tbody>
                         </table>
-
-                        {{ $users->links()}}
                     </div>
                     <!-- END DATA TABLE -->
                 </div>
@@ -175,7 +177,7 @@
         </div>
     </div>
 </footer>
-@include('sweet::alert')
+{{-- @include('sweet::alert')
 <script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
 @if(Session::has('flash_alert_success'))
 <script>
@@ -199,6 +201,6 @@
         })
 </script>
 
-@endif
+@endif --}}
 
 @endsection

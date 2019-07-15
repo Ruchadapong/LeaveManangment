@@ -65,7 +65,16 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-4 col-md-3">
-                                        <label class=" form-control-label">Phone</label>
+                                        <label class="form-control-label">Position</label>
+                                    </div>
+                                    <div class="col-8 col-md-6">
+                                        <input type="text" id="position" name="position" placeholder="Position"
+                                            class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-4 col-md-3">
+                                        <label class=" form-control-label">Mobile Phone</label>
                                     </div>
                                     <div class="col-8 col-md-6">
                                         <input class="form-control" type="tel" name="phone" id="phone"
@@ -73,6 +82,15 @@
                                             maxlength="12">
                                         <small class="form-text text-muted">format :
                                             012-345-6789</small>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                    <div class="col-4 col-md-3">
+                                        <label class="form-control-label">Office Phone</label>
+                                    </div>
+                                    <div class="col-8 col-md-6">
+                                        <input type="tel" id="office_phone" name="office_phone"
+                                            placeholder="Office Phone" maxlength="4" class="form-control">
                                     </div>
                                 </div>
                                 <div class="row form-group m-t-20">

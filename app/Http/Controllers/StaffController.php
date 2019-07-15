@@ -7,19 +7,22 @@ use App\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
 use Image;
+use DB;
 
 class StaffController extends Controller
 {
+    // show data function
     public function view()
     {
-        $users = User::get();
-        $users = json_decode(json_encode($users));
+        $users = User::paginate(5);
+        // $users = json_decode(json_encode($users));
         // echo "<pre>";
         // print_r($users);
         // die;
         return view('leave.staff.view-staff')->with(compact('users'));
     }
 
+    //add data in database
     public function add(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -41,7 +44,9 @@ class StaffController extends Controller
                 $users->email = $data['email'];
                 $users->password = bcrypt($data['password']);
                 $users->department = $data['department'];
+                $users->position = $data['position'];
                 $users->phone = $data['phone'];
+                $users->phone = $data['office_phone'];
 
 
                 if ($status == 0) {
@@ -124,7 +129,7 @@ class StaffController extends Controller
             } else {
                 $fileName = $data['current_image'];
             }
-            User::where(['id' => $id])->update(['name' => $data['name'], 'email' => $data['email'], 'department' => $data['department'], 'phone' => $data['phone'], 'permission' => $data['permission'], 'status' => $data['status'], 'leave_day' => $data['leave_day'], 'image' => $fileName]);
+            User::where(['id' => $id])->update(['name' => $data['name'], 'email' => $data['email'], 'department' => $data['department'], 'position' => $data['position'], 'phone' => $data['phone'], 'office_phone' => $data['office_phone'], 'permission' => $data['permission'], 'status' => $data['status'], 'leave_day' => $data['leave_day'], 'image' => $fileName]);
             return redirect()->back()->with('flash_edit_success', 'STAFF has been updated successfully');
         }
         $staffDetails = User::where(['id' => $id])->first();
@@ -137,5 +142,30 @@ class StaffController extends Controller
         User::where(['id' => $id])->delete();
 
         return redirect()->back()->with('flash_message_success', 'STAFF has been deleted successfully');
+    }
+
+    //search function by name in staff table
+    public function search(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+            // echo "<pre>";
+            // print_r($data);
+            // die;
+            $search_staff = $data['search'];
+
+            if ($search_staff != "") {
+                $searches = User::where('name', 'like', '%' . $search_staff . '%')
+                    ->orwhere('department', 'like', '%' . $search_staff . '%')
+                    ->orwhere('email', 'like', '%' . $search_staff . '%')
+                    ->orwhere('position', 'like', '%' . $search_staff . '%')
+                    ->get();
+                if (count($searches) > 0) {
+                    return view('leave.staff.search')->with(compact('searches', 'search_staff'));
+                } else {
+                    return view('leave.staff.search')->with('flash_message_search');
+                }
+            }
+        }
     }
 }
