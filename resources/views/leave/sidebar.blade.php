@@ -18,7 +18,7 @@
                         <i class="fas fa-list-ul"></i>Leave Type</a>
                 </li>
                 <li class="@yield('leave-department') has-sub">
-                    <a href="#">
+                    <a href="{{route('department.view')}}">
                         <!--route('department')-->
                         <i class="fas fa-sitemap"></i>Department</a>
                 </li>

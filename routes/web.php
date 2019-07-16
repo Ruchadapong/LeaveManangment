@@ -50,6 +50,20 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
             //search staff
             Route::post('/search', 'StaffController@search')->name('staff.search');
         });
+
+        //group department
+        Route::group(['prefix' => 'department'], function () {
+            //view department
+            Route::get('/', 'DepartmentController@view')->name('department.view');
+            //add department
+            Route::match(['get', 'post'], '/add-department', 'DepartmentController@add')->name('department.add');
+            //edit department
+            Route::match(['get', 'post'], '/edit-department/{id}', 'DepartmentController@edit')->name('department.edit');
+            //search department
+            Route::post('/search-dept', 'DepartmentController@search')->name('department.search');
+            //delete department
+            Route::match(['get', 'post'], 'delete-dept/{id}', 'DepartmentController@delete')->name('department.delete');
+        });
     });
 });
 

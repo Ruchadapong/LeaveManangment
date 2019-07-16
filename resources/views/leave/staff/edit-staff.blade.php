@@ -84,7 +84,7 @@
                                 </div>
                                 <div class="row form-group">
                                     <div class="col-4 col-md-3">
-                                        <label class=" form-control-label">Phone</label>
+                                        <label class=" form-control-label">Mobile Phone</label>
                                     </div>
                                     <div class="col-8 col-md-6">
                                         <input class="form-control" type="tel" name="phone" id="phone"

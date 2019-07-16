@@ -100,7 +100,7 @@
                                                                     <tr>
                                                                         <th>permisstion</th>
                                                                         <th>Status</th>
-                                                                        <th>phone</th>
+                                                                        <th>mobile phone</th>
                                                                         <th>office phone</th>
                                                                         <th>Leave Balance</th>
                                                                     </tr>
