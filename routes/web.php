@@ -47,7 +47,7 @@ Route::group(['middleware' => ['admin', 'auth']], function () {
             Route::match(['get', 'post'], '/add-staff', 'StaffController@add')->name('staff.add');
             //edit staff
             Route::match(['get', 'post'], '/edit-staff/{id}', 'StaffController@edit')->name('staff.edit');
-            //search staff
+            //search staff 
             Route::post('/search', 'StaffController@search')->name('staff.search');
         });
 

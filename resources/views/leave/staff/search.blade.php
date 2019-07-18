@@ -177,7 +177,7 @@
         </div>
     </div>
 </footer>
-{{-- @include('sweet::alert')
+@include('sweet::alert')
 <script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
 @if(Session::has('flash_alert_success'))
 <script>
@@ -201,6 +201,6 @@
         })
 </script>
 
-@endif --}}
+@endif
 
 @endsection

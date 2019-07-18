@@ -16,77 +16,79 @@
                     <div class="table-data__tool">
                         <div class="table-data__tool-left">
                             <!-- form search -->
-                            {{-- <form action="{{route('staff.search')}}" method="post" name="search" id="search">
-                            @csrf
-                            <div class="input-group">
-                                <input type="text" class="au-input" name="search" id="search"
-                                    placeholder="Search Table Here!">
-                                <div class="input-group-append">
-                                    <button class="btn btn-warning" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
+                            <form action="{{route('department.search')}}" method="post" name="search" id="search">
+                                @csrf
+                                <div class="input-group">
+                                    <input type="text" class="au-input" name="search" id="search"
+                                        placeholder="Search Table Here!">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-warning" type="submit">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                            </form> --}}
+                            </form>
                         </div>
-                        <!-- go page add staff -->
-                        {{-- <div class="table-data__tool-right">
-                            <a href="{{route('staff.add')}}"><button class="btn btn-outline-success btn-md">
-                            <i class="zmdi zmdi-plus"></i>&nbsp;ADD STAFF</button></a>
-                    </div> --}}
+                        <!-- go page add department -->
+                        <div class="table-data__tool-right">
+                            <a href="{{route('department.add')}}"><button class="btn btn-outline-success btn-md">
+                                    <i class="zmdi zmdi-plus"></i>&nbsp;ADD DEPARTMENT</button></a>
+                        </div>
+                    </div>
+                    <div class="table-responsive table-responsive-data2">
+                        <table class="table table-data2" id="data">
+                            <thead class="text-center">
+                                <tr>
+                                    <th style="padding-left:15px;">Name</th>
+                                    <th>Abbreviation</th>
+                                    <th style="padding-left:15px;">Status</th>
+                                    <th>action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if ($departments->count() == 0)
+                                <tr class="tr-shadow text-center" id="noresults">
+                                    <td colspan="6">No Results</td>
+                                </tr>
+                                @else
+                                @foreach ($departments as $department)
+                                <tr class="tr-shadow text-center">
+                                    <td>{{$department->department_name}}</td>
+                                    <td class="desc">{{$department->department_abbr}}</td>
+                                    <td>@if ($department->status == 1)
+                                        <span class="role member">ACTIVE</span>
+                                        @elseif($department->status == 0)
+                                        <span class="role inactive">INACTIVE</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item"><a
+                                                    href="{{route('department.edit',[$department->id])}}"
+                                                    data-toggle="tooltip" data-placement="top" title="Edit!"><i
+                                                        class="fas fa-edit fa-lg"></i></a>
+                                            </li>
+                                            <li class="list-inline-item ">
+                                                <a href="javascript:" rel="{{ $department->id }}"
+                                                    rel1="department/delete-dept" class="deleteData"
+                                                    data-toggle="tooltip" data-placement="top" title="Delete!"><i
+                                                        class="fas fa-scissors fa-lg"></i></a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                                @endforeach
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE -->
                 </div>
-                <div class="table-responsive table-responsive-data2">
-                    <table class="table table-data2" id="data">
-                        <thead class="text-center">
-                            <tr>
-                                <th>Name</th>
-                                <th>Abbreviation</th>
-                                <th>Status</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (empty($department))
-                            <tr class="tr-shadow text-center" id="noresults">
-                                <td colspan="6">No Results</td>
-                            </tr>
-                            @else
-                            @foreach ($departments as $department)
-                            <tr class="tr-shadow text-center">
-                                <td>{{$department->department_name}}</td>
-                                <td class="desc">{{$department->department_abbr}}</td>
-                                <td>@if ($department->status == 1)
-                                    <span class="role member">ACTIVE</span>
-                                    @elseif($department->status == 0)
-                                    <span class="role inactive">INACTIVE</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    <ul class="list-inline">
-                                        <li class="list-inline-item"><a href="{{route('staff.edit',[$user->id])}}"
-                                                data-toggle="tooltip" data-placement="top" title="Edit!"><i
-                                                    class="fas fa-edit fa-lg"></i></a>
-                                        </li>
-                                        <li class="list-inline-item ">
-                                            <a href="javascript:" rel="{{ $user->id }}" rel1="delete" class="deleteData"
-                                                data-toggle="tooltip" data-placement="top" title="Delete!"><i
-                                                    class="fas fa-scissors fa-lg"></i></a>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr class="spacer"></tr>
-                            @endforeach
-                            @endif
-                        </tbody>
-                    </table>
-                </div>
-                <!-- END DATA TABLE -->
             </div>
-        </div>
 
+        </div>
     </div>
-</div>
 
 </div>
 
@@ -101,17 +103,35 @@
 </footer>
 @include('sweet::alert')
 <script src="{{asset('dashboard/js/sweetalert.all.js')}}"></script>
-{{-- @if(Session::has('flash_alert_success'))
+@if(Session::has('flash_alert_success'))
 <script>
     Swal.fire({
         type: 'success',
-        title: 'Add staff successfully!',
-        text: '{!! Session::get('flash_alert_success') !!}',
-
+        title: '{!! Session::get('flash_alert_success') !!}',
         })
 </script>
 
-@endif --}}
+@endif
+
+@if(Session::has('flash_message_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        title: '{!! Session::get('flash_message_success') !!}',
+            })
+</script>
+
+@endif
+
+@if(Session::has('flash_edit_success'))
+<script>
+    Swal.fire({
+        type: 'success',
+        text: '{!! Session::get('flash_edit_success') !!}',
+            })
+</script>
+
+@endif
 
 
 @endsection

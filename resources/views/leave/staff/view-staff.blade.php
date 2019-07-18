@@ -181,9 +181,7 @@
 <script>
     Swal.fire({
         type: 'success',
-        title: 'Add staff successfully!',
-        text: '{!! Session::get('flash_alert_success') !!}',
-
+        title: '{!! Session::get('flash_alert_success') !!}',
         })
 </script>
 
@@ -193,9 +191,7 @@
 <script>
     Swal.fire({
         type: 'success',
-        title: 'Delete staff successfully!',
-        text: '{!! Session::get('flash_message_success') !!}',
-
+        title: '{!! Session::get('flash_message_success') !!}',
         })
 </script>
 

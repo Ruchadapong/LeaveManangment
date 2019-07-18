@@ -144,7 +144,7 @@ class StaffController extends Controller
         return redirect()->back()->with('flash_message_success', 'STAFF has been deleted successfully');
     }
 
-    //search function by name in staff table
+    //search function by name,department,email and position in staff table
     public function search(Request $request)
     {
         if ($request->isMethod('post')) {
@@ -159,7 +159,7 @@ class StaffController extends Controller
                     ->orwhere('department', 'like', '%' . $search_staff . '%')
                     ->orwhere('email', 'like', '%' . $search_staff . '%')
                     ->orwhere('position', 'like', '%' . $search_staff . '%')
-                    ->get();
+                    ->paginate(5);
                 if (count($searches) > 0) {
                     return view('leave.staff.search')->with(compact('searches', 'search_staff'));
                 } else {
